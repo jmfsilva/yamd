@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . "/../models/LocalMusicService.php";
 $music_service = new LocalMusicService();
 ?>
