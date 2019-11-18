@@ -72,4 +72,4 @@ $music_service = new LocalMusicService();
             </nav>
             
         </header>
-        <main class="clear" role="main">
+        <main class="container flex-shrink-0" role="main">
