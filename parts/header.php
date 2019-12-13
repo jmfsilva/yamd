@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once __DIR__ . "/../models/LocalMusicService.php";
+require_once __DIR__ . "/../models/DbUserService.php";
 $music_service = new LocalMusicService();
+$user_service = new DbUserService();
 ?>
 
 <!DOCTYPE html>
@@ -52,21 +54,30 @@ $music_service = new LocalMusicService();
                                 <input class="form-control" type="text" name="q" placeholder="Search Artist">
                             </form>
                         </li>
+                        <?php
+                        if(array_key_exists('name', $_SESSION)) {
+                        ?>
+                        <li class="nav-item">
+                            <img class="img-thumbnail nav-profile-img" src="<?php echo $_SESSION['picture']?>" alt="User Logo"/>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="/yamd/profile.php"><?php echo $_SESSION['name']?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href="/yamd/logout.php">Logout</a>
+                        </li>
+                        <?php
+                        } else {
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/yamd/login.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/yamd/signup.php">Signup</a>
                         </li>
-                        <li class="nav-item">
-                            <img class="img-thumbnail nav-profile-img" src="" alt="User Logo"/>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"href="/yamd/profile.php">João Silva</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"href="/yamd/logout.php">Logout</a>
-                        </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
             </nav>
