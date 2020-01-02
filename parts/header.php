@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once __DIR__ . "/../models/LocalMusicService.php";
+require_once __DIR__ . "/../models/LastFmMusicService.php";
 require_once __DIR__ . "/../models/DbUserService.php";
-$music_service = new LocalMusicService();
+$music_service = new LastFmMusicService();
 $user_service = new DbUserService();
 ?>
 

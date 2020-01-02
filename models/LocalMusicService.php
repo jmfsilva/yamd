@@ -15,5 +15,14 @@ class LocalMusicService implements IMusicService {
         }
         return array_map('mapArtist', $results['artists']['artist']);
 	}
+
+	public function searchArtists($q, $page, $limit) {
+		$results = $this->getFromLocal('/data/searchArtists.json')['results'];
+		function mapArtist($artists) {
+            return new ArtistSummary($artists);
+        }
+        $artists = array_map('mapArtist', $results['artistmatches']['artist']);
+        return new PagedList($artists, $results);
+	}
 }
 ?>

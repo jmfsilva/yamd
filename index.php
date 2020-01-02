@@ -12,7 +12,7 @@
         <div class="card-body">
           <h5 class="card-title"><?php echo $artist->getName(); ?></h5>
           <p class="card-text">Listeners <?php echo $artist->getListeners(); ?></p>
-          <a href="/yamd/artist.php?id=<?php echo $artist->getId(); ?>" class="btn btn-primary">Artist</a>
+          <a href="<?php echo $artist->getUrl(); ?>" class="btn btn-primary">Artist</a>
         </div>
       </div>
     </div>
