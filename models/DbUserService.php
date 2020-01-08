@@ -28,10 +28,10 @@ class DbUserService implements IUserService {
         $result = $stmt->execute();
         $user = null;
         if (!$stmt->errno) {
-            $stmt->bind_result($email, $name, $picture, $password);
+            $stmt->bind_result($dbEmail, $name, $picture, $password);
             $stmt->fetch();
-            if($email != null) { 
-                $user = new User($email, $name, $picture, $password);
+            if($dbEmail != null) { 
+                $user = new User($dbEmail, $name, $picture, $password);
             }
         }
         $stmt->close();
