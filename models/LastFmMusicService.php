@@ -15,7 +15,9 @@ class LastFmMusicService implements IMusicService {
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Content-Type: application/json',
         ));
-        return json_decode(curl_exec($ch), true);
+        $result = json_decode(curl_exec($ch), true);
+        curl_close($ch);
+        return $result;
     }
 
     public function searchArtists($q, $page, $limit) {
